@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "g1/y6Xy2zGo1Rjoc2qrf0a5Rm3gb0BEuNCoUZuUygG5BsBSygqLzlLLIae6Vq260k4DHM0uK/xpMEpcyHOgHTw==",
+  "success": true,
+  "projectFilePath": "/Users/yago/Documents/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj",
+  "expectedPackageFiles": [
+    "/Users/yago/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/yago/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/yago/.nuget/packages/swashbuckle.aspnetcore/6.3.2/swashbuckle.aspnetcore.6.3.2.nupkg.sha512",
+    "/Users/yago/.nuget/packages/swashbuckle.aspnetcore.swagger/6.3.2/swashbuckle.aspnetcore.swagger.6.3.2.nupkg.sha512",
+    "/Users/yago/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.3.2/swashbuckle.aspnetcore.swaggergen.6.3.2.nupkg.sha512",
+    "/Users/yago/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.3.2/swashbuckle.aspnetcore.swaggerui.6.3.2.nupkg.sha512"
+  ],
+  "logs": []
+}
