@@ -1,16 +1,18 @@
 import { Header } from "./components/Header"
 import { Input } from "./components/Input"
+import { TaskList } from "./components/TaskList"
 
 export function App () {
   return (
     <div className="relative">
         <Header/>
-      <div className="justify-center flex mt-[-2rem] ml-14 relative">
+      <div className="justify-center flex mt-[-2rem]  relative">
         <Input/>
-        <main>
-        
-        </main>
       </div>
+
+      <main className="justify-center flex relative">
+        <TaskList />
+      </main>
 
     </div>
   )
