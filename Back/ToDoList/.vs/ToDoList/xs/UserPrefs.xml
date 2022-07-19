@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{100C2259-5604-453E-A2BF-062DC7CD49A8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ToDoList/Controllers/ToDoController.cs">
+  <MonoDevelop.Ide.ItemProperties.ToDoList PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ToDoList/Models/ToDo.cs">
     <Files>
-      <File FileName="ToDoList/Controllers/ToDoController.cs" Line="22" Column="1" />
-      <File FileName="ToDoList/Models/ToDo.cs" Line="1" Column="1" />
+      <File FileName="ToDoList/Controllers/ToDoController.cs" Line="15" Column="24" />
+      <File FileName="ToDoList/Models/ToDo.cs" Line="10" Column="30" />
       <File FileName="ToDoList/Program.cs" Line="18" Column="27" />
       <File FileName="ToDoList/Data/AppDbContext.cs" Line="17" Column="1" />
     </Files>
@@ -11,12 +12,12 @@
         <State name="__root__">
           <Node name="ToDoList" expanded="True">
             <Node name="ToDoList" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="ToDoController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="ToDo.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -26,11 +27,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ToDoList PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

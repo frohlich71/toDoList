@@ -11,8 +11,8 @@ using ToDoList.Data;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220719224913_Testing")]
-    partial class Testing
+    [Migration("20220719232744_InitialCreation")]
+    partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace ToDoList.Migrations
 
             modelBuilder.Entity("ToDoList.Models.ToDo", b =>
                 {
-                    b.Property<int>("Id_Usuario")
+                    b.Property<int>("Id_Task")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -31,14 +31,11 @@ namespace ToDoList.Migrations
                     b.Property<bool>("Done")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Id_Task")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id_Usuario");
+                    b.HasKey("Id_Task");
 
                     b.ToTable("ToDos");
                 });

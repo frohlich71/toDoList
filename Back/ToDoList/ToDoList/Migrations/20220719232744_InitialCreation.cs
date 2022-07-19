@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace ToDoList.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,15 +13,15 @@ namespace ToDoList.Migrations
                 name: "ToDos",
                 columns: table => new
                 {
-                    Id_Usuario = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id_Task = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Id_Task = table.Column<int>(type: "INTEGER", nullable: false),
-                    Desc = table.Column<string>(type: "TEXT", nullable: false),
-                    Done = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Done = table.Column<bool>(type: "INTEGER", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ToDos", x => x.Id_Usuario);
+                    table.PrimaryKey("PK_ToDos", x => x.Id_Task);
                 });
         }
 

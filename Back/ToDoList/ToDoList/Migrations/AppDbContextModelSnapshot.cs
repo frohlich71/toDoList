@@ -19,7 +19,7 @@ namespace ToDoList.Migrations
 
             modelBuilder.Entity("ToDoList.Models.ToDo", b =>
                 {
-                    b.Property<int>("Id_Usuario")
+                    b.Property<int>("Id_Task")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -29,14 +29,11 @@ namespace ToDoList.Migrations
                     b.Property<bool>("Done")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Id_Task")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id_Usuario");
+                    b.HasKey("Id_Task");
 
                     b.ToTable("ToDos");
                 });
