@@ -1,6 +1,22 @@
+import { EmptyList } from "./components/EmptyList"
 import { Header } from "./components/Header"
 import { Input } from "./components/Input"
-import { TaskList } from "./components/TaskList"
+import { Task } from "./components/Task"
+
+const tasks = [
+  {
+    id: 1,
+    content: 'Fazer 3 exercicios',
+    status: false
+
+  },
+  {
+    id: 2,
+    content: 'Estudar 3 horas',
+    status: true
+  }
+]
+
 
 export function App () {
   return (
@@ -11,9 +27,24 @@ export function App () {
       </div>
 
       <main className="justify-center flex relative">
-        <TaskList />
+      <article>
+        <header className="inline-flex mt-24 mb-10">
+          <div className="mr-[28rem] text-[#4EA8DE] font-bold">
+            Tarefas criadas
+            <span className="bg-[#333333] text-white rounded-full p-1 pl-3 pr-3 ml-2">
+              0
+            </span>
+          </div>
+          <div className="text-[#8284FA] justify-end flex font-bold">
+            Concluidas
+            <span className="bg-[#333333] text-white rounded-full  pl-3 pr-3 ml-2">
+              0
+            </span>
+          </div>
+        </header>
+        <Task />
+      </article>
       </main>
-
     </div>
   )
 }
