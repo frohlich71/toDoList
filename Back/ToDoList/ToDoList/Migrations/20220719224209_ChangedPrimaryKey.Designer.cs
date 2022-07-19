@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoList.Data;
 
@@ -10,16 +11,17 @@ using ToDoList.Data;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220719224209_ChangedPrimaryKey")]
+    partial class ChangedPrimaryKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.7");
 
             modelBuilder.Entity("ToDoList.Models.ToDo", b =>
                 {
-                    b.Property<int>("Id_Usuario")
+                    b.Property<int>("Id_Task")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -29,14 +31,11 @@ namespace ToDoList.Migrations
                     b.Property<bool>("Done")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Id_Task")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id_Usuario");
+                    b.HasKey("Id_Task");
 
                     b.ToTable("ToDos");
                 });

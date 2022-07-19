@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yago/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj": {}
+    "/Users/yago/Documents/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj": {}
   },
   "projects": {
-    "/Users/yago/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj": {
+    "/Users/yago/Documents/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yago/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj",
+        "projectUniqueName": "/Users/yago/Documents/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj",
         "projectName": "ToDoList",
-        "projectPath": "/Users/yago/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj",
+        "projectPath": "/Users/yago/Documents/Projects/toDoList/Back/ToDoList/ToDoList/ToDoList.csproj",
         "packagesPath": "/Users/yago/.nuget/packages/",
-        "outputPath": "/Users/yago/Projects/toDoList/Back/ToDoList/ToDoList/obj/",
+        "outputPath": "/Users/yago/Documents/Projects/toDoList/Back/ToDoList/ToDoList/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yago/.nuget/NuGet/NuGet.Config"
