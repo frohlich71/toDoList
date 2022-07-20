@@ -2,21 +2,7 @@ import { EmptyList } from "./components/EmptyList"
 import { Header } from "./components/Header"
 import { Input } from "./components/Input"
 import { Task } from "./components/Task"
-
-const tasks = [
-  {
-    id: 1,
-    content: 'Fazer 3 exercicios',
-    status: false
-
-  },
-  {
-    id: 2,
-    content: 'Estudar 3 horas',
-    status: true
-  }
-]
-
+import { TaskList } from "./components/TaskLIst"
 
 export function App () {
   return (
@@ -42,7 +28,7 @@ export function App () {
             </span>
           </div>
         </header>
-        <Task />
+       <TaskList />
       </article>
       </main>
     </div>
