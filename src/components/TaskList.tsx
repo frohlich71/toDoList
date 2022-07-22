@@ -8,18 +8,22 @@ interface TaskListProps {
     content: string;
     status: boolean;
   }[];
+  handleTasksStatus: (id:number) => void
 }
 
 
-export function TaskList ({taskList}:TaskListProps) {
+export function TaskList ({taskList, handleTasksStatus}:TaskListProps) {
   return(
     <div>
       {taskList.map(task => {
         return (
           <Task
             key={task.id}
+            id={task.id}
+            status={task.status}
             content ={task.content}
-            status = {task.status}
+            taskList={taskList}
+            handleTasksStatus={handleTasksStatus}
           />
         )
       })}

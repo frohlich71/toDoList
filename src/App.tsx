@@ -7,12 +7,10 @@ import { FormEvent, useState } from "react"
 
 export function App () {
 
-   
-
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      status: false,
+      status: true,
       content: 'Fazer comida'
   
     },
@@ -20,18 +18,45 @@ export function App () {
       id: 2,
       content: 'Estudar 3 horas',
       status: true
+    },
+    {
+      id: 3,
+      content: 'Estudar 6 horas',
+      status: false
     }
   ])
-
+  
 
   function handleCreateNewTask() {
     const taskInput = document.getElementsByName('content')
     const taskContent = (taskInput[0] as HTMLInputElement).value
 
-    console.log(tasks)
     setTasks([...tasks,{ id: tasks.length + 1, content: taskContent, status:false }])
   } 
 
+  function checkDoneTasks(task:{id:number, content:string, status:boolean}) {
+    return task.status == true 
+  }
+
+  let checkedTasks = tasks.filter(checkDoneTasks)
+  
+  const [doneTasksCount, setDoneTasksCount] = useState(checkedTasks.length)
+  
+
+  function handleTasksStatus(id: number) {
+    const tempTasks = [...tasks]
+    tempTasks[id - 1].status = !tempTasks[id - 1].status
+
+    setTasks(tempTasks)
+    
+    if(tasks[id -1].status === true) {
+      setDoneTasksCount(doneTasksCount + 1)
+    } else if(tasks[id -1].status === false) {
+      setDoneTasksCount(doneTasksCount - 1)
+    }
+  }
+  
+  
   return (
     <div className="relative">
       <header className="bg-[#0D0D0D] h-48 justify-center flex"> 
@@ -50,17 +75,17 @@ export function App () {
           <div className="mr-[28rem] text-[#4EA8DE] font-bold">
             Tarefas criadas
             <span className="bg-[#333333] text-white rounded-full p-1 pl-3 pr-3 ml-2">
-              0
+              {tasks.length}
             </span>
           </div>
           <div className="text-[#8284FA] justify-end flex font-bold">
             Concluidas
             <span className="bg-[#333333] text-white rounded-full  pl-3 pr-3 ml-2">
-              0
+              {doneTasksCount}
             </span>
           </div>
         </header>
-       <TaskList taskList={tasks}/>
+       <TaskList taskList={tasks} handleTasksStatus={handleTasksStatus}/>
       </article>
       </main>
     </div>
