@@ -2,7 +2,7 @@ import { EmptyList } from "./components/EmptyList"
 import { Task } from "./components/Task"
 import { TaskList } from "./components/TaskList"
 import toDoLogo from './assets/Logo.svg'
-import { FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 
 
 
@@ -27,12 +27,14 @@ export function App () {
     }
   ])
   
+  const [newTaskContent, setNewTaskContent] = useState('')
 
   function handleCreateNewTask() {
-    const taskInput = document.getElementsByName('content')
-    const taskContent = (taskInput[0] as HTMLInputElement).value
 
-    setTasks([...tasks,{ id: tasks.length + 1, content: taskContent, status:false }])
+    setTasks([...tasks,{ id: tasks.length + 1, content: newTaskContent, status:false }])
+
+    setNewTaskContent('')
+    
   } 
 
   function checkDoneTasks(task:{id:number, content:string, status:boolean}) {
@@ -57,6 +59,10 @@ export function App () {
 
   }
   
+  function handleNewTaskChange (event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskContent(event.target.value)
+  }
+
   function handleDeleteTasks (idToDelete:number, statusToDelete:boolean) {
     const tasksWithoutDeletedOne = tasks.filter(task => {
       return task.id !== idToDelete 
@@ -74,7 +80,7 @@ export function App () {
       </header>
       <div className="justify-center flex mt-[-2rem]  relative">
       <form>
-        <input type="text" id="content" name="content" placeholder="Adicione uma nova tarefa" className="bg-[#262626] shadow-md shadow-black w-110 h-14 p-3 rounded-xl outline outline-2 outline-[#0D0D0D] text-white  "/>
+        <input type="text" id="content" name="content" value={newTaskContent}  onChange={handleNewTaskChange} placeholder="Adicione uma nova tarefa" className="bg-[#262626] shadow-md shadow-black w-110 h-14 p-3 rounded-xl outline outline-2 outline-[#0D0D0D] text-white  "/>
         <button type="button" onClick={handleCreateNewTask} className="bg-[#1E6F9F] w-16 h-14 rounded-xl ml-3 text-white shadow-md shadow-black outline outline-1 outline-[#0D0D0D] transition hover:bg-sky-900 hover:transition-all">Criar</button>
       </form>
       </div>
