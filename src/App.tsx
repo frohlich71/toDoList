@@ -5,6 +5,7 @@ import toDoLogo from './assets/Logo.svg'
 import { FormEvent, useState } from "react"
 
 
+
 export function App () {
 
   const [tasks, setTasks] = useState([
@@ -42,7 +43,6 @@ export function App () {
   
   const [doneTasksCount, setDoneTasksCount] = useState(checkedTasks.length)
   
-
   function handleTasksStatus(id: number) {
     const tempTasks = [...tasks]
     tempTasks[id - 1].status = !tempTasks[id - 1].status
@@ -53,10 +53,20 @@ export function App () {
       setDoneTasksCount(doneTasksCount + 1)
     } else if(tasks[id -1].status === false) {
       setDoneTasksCount(doneTasksCount - 1)
-    }
+  }
+
   }
   
-  
+  function handleDeleteTasks (idToDelete:number, statusToDelete:boolean) {
+    const tasksWithoutDeletedOne = tasks.filter(task => {
+      return task.id !== idToDelete 
+    })
+    setTasks(tasksWithoutDeletedOne)
+    if(statusToDelete === true) {
+      setDoneTasksCount(doneTasksCount-1)
+    }
+  }
+
   return (
     <div className="relative">
       <header className="bg-[#0D0D0D] h-48 justify-center flex"> 
@@ -65,7 +75,7 @@ export function App () {
       <div className="justify-center flex mt-[-2rem]  relative">
       <form>
         <input type="text" id="content" name="content" placeholder="Adicione uma nova tarefa" className="bg-[#262626] shadow-md shadow-black w-110 h-14 p-3 rounded-xl outline outline-2 outline-[#0D0D0D] text-white  "/>
-        <button type="button" onClick={handleCreateNewTask} className="bg-[#1E6F9F] w-16 h-14 rounded-xl ml-3 text-white shadow-md shadow-black outline outline-1 outline-[#0D0D0D]">Criar</button>
+        <button type="button" onClick={handleCreateNewTask} className="bg-[#1E6F9F] w-16 h-14 rounded-xl ml-3 text-white shadow-md shadow-black outline outline-1 outline-[#0D0D0D] transition hover:bg-sky-900 hover:transition-all">Criar</button>
       </form>
       </div>
 
@@ -85,7 +95,7 @@ export function App () {
             </span>
           </div>
         </header>
-       <TaskList taskList={tasks} handleTasksStatus={handleTasksStatus}/>
+        {tasks.length == 0 ? <EmptyList /> :<TaskList taskList={tasks} handleTasksStatus={handleTasksStatus} handleDeleteTasks={handleDeleteTasks}/>}
       </article>
       </main>
     </div>
