@@ -15,8 +15,14 @@ module.exports = {
       },
       outlineWidth: {
         10: '12px',
+      },
+      boxShadow: {
+        '3xl':'0px 3px 8px rgba(0, 0, 0, 0.24)',
+        '4zl': '24px rgba(0.24)'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }
