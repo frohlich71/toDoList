@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data;
@@ -11,6 +12,7 @@ namespace ToDoList.Controllers
     [Route("v1")]
     public class ToDoController : ControllerBase
     {
+       [EnableCors]
        [HttpGet]
        [Route("todos")]
        public async Task<IActionResult> GetToDosAsync([FromServices]AppDbContext context)
@@ -19,6 +21,7 @@ namespace ToDoList.Controllers
             return Ok(todos);
         }
 
+        [EnableCors]
         [HttpGet]
         [Route("todos/{idTask}")]
         public async Task<IActionResult> GetByTaskIdAsync([FromServices] AppDbContext context, [FromRoute]int idTask)
@@ -27,6 +30,7 @@ namespace ToDoList.Controllers
             return todo == null ? NotFound() : Ok(todo);
         }
 
+        [EnableCors]
         [HttpPost]
         [Route("todos")]
         public async Task<IActionResult> PostAsync([FromServices] AppDbContext context, [FromBody] CreateToDoViewModel model)
