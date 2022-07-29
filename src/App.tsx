@@ -10,7 +10,15 @@ export function App () {
 const [data, setData] = useState([]);
 
 useEffect(() => {
-  api.get('v1/todos/').then(({data}) => {
+  api.get('/v1/todos/', {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    proxy: {
+      host: 'localhost:',
+      port: 7287
+    }
+  }).then(({data}) => {
     setData(data)
   })
   console.log(data)
