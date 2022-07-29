@@ -2,11 +2,21 @@ import { EmptyList } from "./components/EmptyList"
 import { Task } from "./components/Task"
 import { TaskList } from "./components/TaskList"
 import toDoLogo from './assets/Logo.svg'
-import { ChangeEvent, FormEvent, useState } from "react"
-
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
+import api from "./services/api"
 
 
 export function App () {
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  api.get('v1/todos/').then(({data}) => {
+    setData(data)
+  })
+  console.log(data)
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
   const [tasks, setTasks] = useState([
     {
