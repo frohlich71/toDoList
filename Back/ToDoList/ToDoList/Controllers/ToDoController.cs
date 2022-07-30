@@ -25,7 +25,6 @@ namespace ToDoList.Controllers
             return Ok(todos);
         }
 
-        
         [HttpGet]
         [Route("todos/{idTask}")]
         public async Task<IActionResult> GetByTaskIdAsync([FromServices] AppDbContext context, [FromRoute]int idTask)
@@ -34,7 +33,6 @@ namespace ToDoList.Controllers
             return todo == null ? NotFound() : Ok(todo);
         }
 
-        
         [HttpPost]
         [Route("todos")]
         public async Task<IActionResult> PostAsync([FromServices] AppDbContext context, [FromBody] CreateToDoViewModel model)
