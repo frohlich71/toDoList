@@ -8,20 +8,23 @@ using ToDoList.ViewModel;
 
 namespace ToDoList.Controllers
 {
+    [EnableCors
+        ]
     [ApiController]
     [Route("v1")]
     public class ToDoController : ControllerBase
     {
-       [EnableCors]
+       
        [HttpGet]
        [Route("todos")]
+     
+
        public async Task<IActionResult> GetToDosAsync([FromServices]AppDbContext context)
         {
             var todos = await context.ToDos.AsNoTracking().ToListAsync();
             return Ok(todos);
         }
 
-        [EnableCors]
         [HttpGet]
         [Route("todos/{idTask}")]
         public async Task<IActionResult> GetByTaskIdAsync([FromServices] AppDbContext context, [FromRoute]int idTask)
@@ -30,7 +33,6 @@ namespace ToDoList.Controllers
             return todo == null ? NotFound() : Ok(todo);
         }
 
-        [EnableCors]
         [HttpPost]
         [Route("todos")]
         public async Task<IActionResult> PostAsync([FromServices] AppDbContext context, [FromBody] CreateToDoViewModel model)
