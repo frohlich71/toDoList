@@ -10,18 +10,11 @@ export function App () {
 const [data, setData] = useState([]);
 
 useEffect(() => {
-  api.get('/v1/todos/', {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-    proxy: {
-      host: 'localhost:',
-      port: 7287
-    }
-  }).then(({data}) => {
-    setData(data)
-  })
-  console.log(data)
+  api.get('/todos', {
+  }).then(res => {
+    setData(res.data)
+    console.log(res.data)
+  }, )
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
