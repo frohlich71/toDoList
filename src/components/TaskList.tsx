@@ -4,9 +4,9 @@ import { Task } from "./Task"
 
 interface TaskListProps {
   taskList: {
-    id: number;
-    content: string;
-    status: boolean;
+    id_Task?: number;
+    title?: string;
+    done?: boolean;
   }[];
   handleTasksStatus: (id:number) => void;
   handleDeleteTasks: (idToDelete:number, statusToDelete:boolean) => void;
@@ -19,10 +19,10 @@ export function TaskList ({taskList, handleTasksStatus, handleDeleteTasks}:TaskL
       {taskList.map(task => {
           return (
             <Task
-              key={task.id}
-              id={task.id}
-              status={task.status}
-              content ={task.content}
+              key={task.id_Task}
+              id_Task={task.id_Task}
+              done={task.done}
+              title ={task.title}
               taskList={taskList}
               handleTasksStatus={handleTasksStatus}
               handleDeleteTasks={handleDeleteTasks}

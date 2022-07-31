@@ -5,51 +5,35 @@ import toDoLogo from './assets/Logo.svg'
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import api from "./services/api"
 
+interface InitialTasks {
+  id_Task?: number;
+  title?: string;
+  done?: boolean;
+}
 
 export function App () {
-const [data, setData] = useState([]);
+const [tasks, setTasks] = useState<InitialTasks[]>([{}]);
 
 useEffect(() => {
   api.get('/todos', {
   }).then(res => {
-    setData(res.data)
-    console.log(res.data)
+    setTasks(res.data)
   }, )
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
-
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      status: true,
-      content: 'Fazer comida'
-  
-    },
-    {
-      id: 2,
-      content: 'Estudar 3 horas',
-      status: true
-    },
-    {
-      id: 3,
-      content: 'Estudar 6 horas',
-      status: false
-    }
-  ])
   
   const [newTaskContent, setNewTaskContent] = useState('')
 
   function handleCreateNewTask() {
 
-    setTasks([...tasks,{ id: tasks.length + 1, content: newTaskContent, status:false }])
+    setTasks([...tasks,{ id_Task: tasks.length + 1, title: newTaskContent, done:false }])
 
     setNewTaskContent('')
     
   } 
 
-  function checkDoneTasks(task:{id:number, content:string, status:boolean}) {
-    return task.status == true 
+  function checkDoneTasks(task:{id_Task?:number, title?:string, done?:boolean}) {
+    return task.done == true 
   }
 
   let checkedTasks = tasks.filter(checkDoneTasks)
@@ -57,14 +41,15 @@ useEffect(() => {
   const [doneTasksCount, setDoneTasksCount] = useState(checkedTasks.length)
   
   function handleTasksStatus(id: number) {
+    
     const tempTasks = [...tasks]
-    tempTasks[id - 1].status = !tempTasks[id - 1].status
+    tempTasks[id - 1].done = !tempTasks[id - 1].done
 
     setTasks(tempTasks)
     
-    if(tasks[id -1].status === true) {
+    if(tasks[id -1].done === true) {
       setDoneTasksCount(doneTasksCount + 1)
-    } else if(tasks[id -1].status === false) {
+    } else if(tasks[id -1].done === false) {
       setDoneTasksCount(doneTasksCount - 1)
   }
 
@@ -76,7 +61,7 @@ useEffect(() => {
 
   function handleDeleteTasks (idToDelete:number, statusToDelete:boolean) {
     const tasksWithoutDeletedOne = tasks.filter(task => {
-      return task.id !== idToDelete 
+      return task.id_Task !== idToDelete 
     })
     setTasks(tasksWithoutDeletedOne)
     if(statusToDelete === true) {
